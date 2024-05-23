@@ -1,3 +1,8 @@
+![A picture of the program](/assets/program.png)
+
+---
+
+## Instalation
 To run the application:
 1. Clone the repository
 2. In the folder run the following command:
