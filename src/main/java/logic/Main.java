@@ -4,37 +4,39 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import gui.Screen;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Main {
 
+    //initialize db
     public static final User[] dbUsers = new User[10];
 
- 
     public static void main(String[] args) {
-        //  String theme = prefs.get("theme", "dark");
+        
         //get actual theme
-        Theme theme = new Theme();
-        String actualTheme = theme.getTheme();
-       
+        UserPreferences preferences = new UserPreferences();
+        String actualTheme = preferences.getTheme();
+
         //set FlatLaf Look&Feel
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-
-        } catch (Exception ex) {
-            System.err.println("Failed to initialize LaF");
+        } catch (UnsupportedLookAndFeelException ex) {
+            System.err.println("Failed to initialize L&F");
         }
-
+        
+        //fullfill db with empty users
         for (int i = 0; i < dbUsers.length; i++) {
             dbUsers[i] = new User();
         }
         
-        if (actualTheme.equals("dark")){
+        //set theme
+        if (actualTheme.equals("dark")) {
             FlatDarkLaf.setup();
-        }
-        else {
+        } else {
             FlatLightLaf.setup();
         }
         
+        //creating jframe
         Screen screen = new Screen();
         screen.setVisible(true);
         screen.setLocationRelativeTo(null);

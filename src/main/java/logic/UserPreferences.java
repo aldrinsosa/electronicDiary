@@ -2,14 +2,15 @@ package logic;
 
 import java.util.prefs.Preferences;
 
-public class Theme {
+public class UserPreferences {
     
     public Preferences prefs;
     
     public String getTheme(){
+        //get the preferences
         prefs = Preferences.userRoot().node(this.getClass().getName());
-        String theme = prefs.get("theme", "dark");
-        return theme;
+        //returns dark as default theme
+        return prefs.get("theme", "dark");
     }
     
     public void setTheme(String theme){

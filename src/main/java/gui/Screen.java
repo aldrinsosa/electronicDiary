@@ -1,7 +1,9 @@
 package gui;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import logic.Main;
-import logic.Theme;
+import logic.UserPreferences;
 import logic.User;
 
 /**
@@ -9,10 +11,7 @@ import logic.User;
  * @author sosa
  */
 public class Screen extends javax.swing.JFrame {
-    
-    //theme state
-    public static String theme = "dark";
-    
+
     /**
      * Creates new form Screen
      */
@@ -51,6 +50,7 @@ public class Screen extends javax.swing.JFrame {
         indexNumber = new javax.swing.JLabel();
         indexLabel = new javax.swing.JLabel();
         themeButton = new javax.swing.JButton();
+        alert = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,10 +119,18 @@ public class Screen extends javax.swing.JFrame {
         indexNumber.setText("0");
 
         indexLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        indexLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         indexLabel.setText("Index: ");
 
         themeButton.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        themeButton.setText("☀️");
+        UserPreferences theme = new UserPreferences();
+        String actualTheme = theme.getTheme();
+        if(actualTheme.equals("dark")){
+            themeButton.setText("🌙️");
+        }
+        else {
+            themeButton.setText("☀️");
+        }
         themeButton.setFocusPainted(false);
         themeButton.setIconTextGap(0);
         themeButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
@@ -131,6 +139,9 @@ public class Screen extends javax.swing.JFrame {
                 themeButtonActionPerformed(evt);
             }
         });
+
+        alert.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        alert.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,51 +156,58 @@ public class Screen extends javax.swing.JFrame {
                         .addGap(57, 57, 57)
                         .addComponent(themeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(113, 113, 113)
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                        .addGap(236, 236, 236))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 59, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(fNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(dniLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(sNameLabel))
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dniInput)
                     .addComponent(fNameInput)
-                    .addComponent(sNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sNameInput))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(birthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addressLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addressInput)
                     .addComponent(phoneInput)
-                    .addComponent(birthInput, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(birthInput))
                 .addGap(44, 44, 44))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(305, 305, 305)
+                .addComponent(saveBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
+                .addComponent(rightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(188, 188, 188))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addComponent(leftBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addContainerGap()
+                .addComponent(indexLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(indexNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(22, 22, 22))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(rightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(172, 172, 172)
+                        .addComponent(leftBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(indexLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(indexNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(34, 34, 34)
+                        .addComponent(alert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,19 +243,21 @@ public class Screen extends javax.swing.JFrame {
                             .addComponent(birthInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(35, 35, 35)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(leftBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(indexNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(indexLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(alert, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
-        themeButton.getAccessibleContext().setAccessibleDescription("light mode");
+        themeButton.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -258,20 +278,46 @@ public class Screen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dniInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dniInputActionPerformed
+    private void themeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeButtonActionPerformed
+        //get actual theme
+        UserPreferences preferences = new UserPreferences();
+        String actualTheme = preferences.getTheme();
+        
+        if (actualTheme.equals("dark")) {
+            preferences.setTheme("light");
+            themeButton.setText("☀️");
+        } else {
+            preferences.setTheme("dark");
+            themeButton.setText("🌙️");
+        }
+        
+        showAlert();
+    }//GEN-LAST:event_themeButtonActionPerformed
 
-    private void fNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fNameInputActionPerformed
+    private void rightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightBtnActionPerformed
+        int index = Integer.parseInt(indexNumber.getText());
+        
+        //prevents going out of the array
+        if (index == 9) {
+            return;
+        }
+        
+        //get the data
+        User user = Main.getData(index, "right");
 
-    private void phoneInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phoneInputActionPerformed
+        dniInput.setText(user.getDni());
+        fNameInput.setText(user.getfName());
+        sNameInput.setText(user.getsName());
+        addressInput.setText(user.getAddress());
+        phoneInput.setText(user.getPhone());
+        birthInput.setText(user.getBirth());
+
+        String newIndex = Integer.toString(index + 1);
+        indexNumber.setText(newIndex);
+    }//GEN-LAST:event_rightBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        
+
         int index = Integer.parseInt(indexNumber.getText());
         
         User user = new User();
@@ -281,62 +327,62 @@ public class Screen extends javax.swing.JFrame {
         user.setAddress(addressInput.getText());
         user.setPhone(phoneInput.getText());
         user.setBirth(birthInput.getText());
-        
+
         Main.saveData(index, user);
-        
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void leftBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftBtnActionPerformed
         int index = Integer.parseInt(indexNumber.getText());
-        if (index == 0){
+        
+        //prevents going out of the array
+        if (index == 0) {
             return;
         }
         
+        //get the data
         User user = Main.getData(index, "left");
-        
+
         dniInput.setText(user.getDni());
         fNameInput.setText(user.getfName());
         sNameInput.setText(user.getsName());
         addressInput.setText(user.getAddress());
         phoneInput.setText(user.getPhone());
         birthInput.setText(user.getBirth());
-        
+
         String newIndex = Integer.toString(index - 1);
         indexNumber.setText(newIndex);
     }//GEN-LAST:event_leftBtnActionPerformed
 
-    private void rightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightBtnActionPerformed
-        int index = Integer.parseInt(indexNumber.getText());
-        if (index == 9){
-            return;
-        }
-        User user = Main.getData(index, "right");
-        
-        dniInput.setText(user.getDni());
-        fNameInput.setText(user.getfName());
-        sNameInput.setText(user.getsName());
-        addressInput.setText(user.getAddress());
-        phoneInput.setText(user.getPhone());
-        birthInput.setText(user.getBirth());
-        
-        String newIndex = Integer.toString(index + 1);
-        indexNumber.setText(newIndex);
-    }//GEN-LAST:event_rightBtnActionPerformed
+    private void phoneInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneInputActionPerformed
 
-    private void themeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeButtonActionPerformed
-        Theme theme = new Theme();
-        String actualTheme = theme.getTheme();
-        if (actualTheme.equals("dark")){
-            theme.setTheme("light");
-        }
-        else{
-            theme.setTheme("dark");
-        }
-    }//GEN-LAST:event_themeButtonActionPerformed
+    private void dniInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dniInputActionPerformed
+
+    private void fNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fNameInputActionPerformed
+
+    private void showAlert() {
+        Timer timer = new Timer();
+
+        alert.setText("[ A RESTART IS NECESSARY TO APPLY THE THEME ]");
+
+        //delete the alert after 2 seconds
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                alert.setText("");
+            }
+        }, 2 * 1000);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressInput;
     private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel alert;
     private javax.swing.JTextField birthInput;
     private javax.swing.JLabel birthLabel;
     private javax.swing.JTextField dniInput;
