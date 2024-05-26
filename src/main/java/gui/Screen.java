@@ -1,6 +1,7 @@
 package gui;
 
 import logic.Main;
+import logic.Theme;
 import logic.User;
 
 /**
@@ -8,7 +9,10 @@ import logic.User;
  * @author sosa
  */
 public class Screen extends javax.swing.JFrame {
-
+    
+    //theme state
+    public static String theme = "dark";
+    
     /**
      * Creates new form Screen
      */
@@ -46,7 +50,7 @@ public class Screen extends javax.swing.JFrame {
         rightBtn = new javax.swing.JButton();
         indexNumber = new javax.swing.JLabel();
         indexLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        themeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,14 +121,14 @@ public class Screen extends javax.swing.JFrame {
         indexLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         indexLabel.setText("Index: ");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setText("☀️");
-        jButton1.setFocusPainted(false);
-        jButton1.setIconTextGap(0);
-        jButton1.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        themeButton.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        themeButton.setText("☀️");
+        themeButton.setFocusPainted(false);
+        themeButton.setIconTextGap(0);
+        themeButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        themeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                themeButtonActionPerformed(evt);
             }
         });
 
@@ -139,7 +143,7 @@ public class Screen extends javax.swing.JFrame {
                         .addComponent(jSeparator1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(themeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(113, 113, 113)
                         .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -189,7 +193,7 @@ public class Screen extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(themeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -233,7 +237,7 @@ public class Screen extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
-        jButton1.getAccessibleContext().setAccessibleDescription("light mode");
+        themeButton.getAccessibleContext().setAccessibleDescription("light mode");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -319,9 +323,16 @@ public class Screen extends javax.swing.JFrame {
         indexNumber.setText(newIndex);
     }//GEN-LAST:event_rightBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void themeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeButtonActionPerformed
+        Theme theme = new Theme();
+        String actualTheme = theme.getTheme();
+        if (actualTheme.equals("dark")){
+            theme.setTheme("light");
+        }
+        else{
+            theme.setTheme("dark");
+        }
+    }//GEN-LAST:event_themeButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressInput;
@@ -334,7 +345,6 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JLabel fNameLabel;
     private javax.swing.JLabel indexLabel;
     private javax.swing.JLabel indexNumber;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -345,6 +355,7 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JTextField sNameInput;
     private javax.swing.JLabel sNameLabel;
     private javax.swing.JButton saveBtn;
+    private javax.swing.JButton themeButton;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

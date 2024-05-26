@@ -9,11 +9,17 @@ public class Main {
 
     public static final User[] dbUsers = new User[10];
 
+ 
     public static void main(String[] args) {
+        //  String theme = prefs.get("theme", "dark");
+        //get actual theme
+        Theme theme = new Theme();
+        String actualTheme = theme.getTheme();
+       
+        //set FlatLaf Look&Feel
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            
-            
+
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
         }
@@ -22,7 +28,13 @@ public class Main {
             dbUsers[i] = new User();
         }
         
-        FlatDarkLaf.setup();
+        if (actualTheme.equals("dark")){
+            FlatDarkLaf.setup();
+        }
+        else {
+            FlatLightLaf.setup();
+        }
+        
         Screen screen = new Screen();
         screen.setVisible(true);
         screen.setLocationRelativeTo(null);
@@ -36,4 +48,5 @@ public class Main {
         int newIndex = direction.equals("left") ? oldIndex - 1 : oldIndex + 1;
         return dbUsers[newIndex];
     }
+
 }
