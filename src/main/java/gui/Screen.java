@@ -1,7 +1,9 @@
 package gui;
 
+import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.ImageIcon;
 import logic.Main;
 import logic.UserPreferences;
 import logic.User;
@@ -17,6 +19,7 @@ public class Screen extends javax.swing.JFrame {
      */
     public Screen() {
         initComponents();
+        setIcon();
     }
 
     /**
@@ -282,7 +285,7 @@ public class Screen extends javax.swing.JFrame {
         //get actual theme
         UserPreferences preferences = new UserPreferences();
         String actualTheme = preferences.getTheme();
-        
+
         if (actualTheme.equals("dark")) {
             preferences.setTheme("light");
             themeButton.setText("☀️");
@@ -290,18 +293,18 @@ public class Screen extends javax.swing.JFrame {
             preferences.setTheme("dark");
             themeButton.setText("🌙️");
         }
-        
+
         showAlert();
     }//GEN-LAST:event_themeButtonActionPerformed
 
     private void rightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightBtnActionPerformed
         int index = Integer.parseInt(indexNumber.getText());
-        
+
         //prevents going out of the array
         if (index == 9) {
             return;
         }
-        
+
         //get the data
         User user = Main.getData(index, "right");
 
@@ -319,7 +322,7 @@ public class Screen extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
 
         int index = Integer.parseInt(indexNumber.getText());
-        
+
         User user = new User();
         user.setDni(dniInput.getText());
         user.setfName(fNameInput.getText());
@@ -333,12 +336,12 @@ public class Screen extends javax.swing.JFrame {
 
     private void leftBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftBtnActionPerformed
         int index = Integer.parseInt(indexNumber.getText());
-        
+
         //prevents going out of the array
         if (index == 0) {
             return;
         }
-        
+
         //get the data
         User user = Main.getData(index, "left");
 
@@ -404,4 +407,12 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JButton themeButton;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        //get favicon
+        URL iconURL = getClass().getResource("/favicon.png");
+        ImageIcon img = new ImageIcon(iconURL);
+
+        setIconImage(img.getImage());
+    }
 }
