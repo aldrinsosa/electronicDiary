@@ -1,22 +1,28 @@
-![A picture of the program](/assets/program.png)
-
+Dark Mode
 ---
+![A picture of the program in dark mode](/assets/darkMode.png)
+---
+Light Mode
+---
+![A picture of the program in light mode](/assets/lightMode.png)
 
-Made with Java 17.0.11
 
-## Instalation
-To run the application:
+## Dependencies
+
+- Java 17.0.11 
+- Maven 3.8.7 
+- [FlatLaf](https://www.formdev.com/flatlaf/) 3.4.1
+- maven-shade-plugin 3.2.4
+
+
+## Build from Source
+
 1. Clone the repository
-2. In the folder run the following command:
+2. In the project folder run the following command:
 ```
-javac -d bin src/main/java/**/*.java
+mvn package
 ```
-3. And lastly put this in your terminal:
+3. Then run the jar file:
 ```
-java -cp bin/ logic.Main
-```
-(You could also do the following)
-```
-cd bin
-java logic.Main
+java -jar target/electronicDiary-1.0.jar 
 ```
