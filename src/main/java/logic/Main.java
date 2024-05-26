@@ -1,6 +1,7 @@
 package logic;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
 import gui.Screen;
 import javax.swing.UIManager;
 
@@ -11,6 +12,8 @@ public class Main {
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
+            
+            
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
         }
@@ -18,7 +21,8 @@ public class Main {
         for (int i = 0; i < dbUsers.length; i++) {
             dbUsers[i] = new User();
         }
-
+        
+        FlatDarkLaf.setup();
         Screen screen = new Screen();
         screen.setVisible(true);
         screen.setLocationRelativeTo(null);
