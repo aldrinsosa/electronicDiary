@@ -6,7 +6,7 @@ import java.util.TimerTask;
 import javax.swing.ImageIcon;
 import logic.Main;
 import logic.UserPreferences;
-import logic.User;
+import logic.Contact;
 
 /**
  *
@@ -306,7 +306,7 @@ public class Screen extends javax.swing.JFrame {
         }
 
         //get the data
-        User user = Main.getData(index, "right");
+        Contact user = Main.getData(index, "right");
 
         dniInput.setText(user.getDni());
         fNameInput.setText(user.getfName());
@@ -323,7 +323,7 @@ public class Screen extends javax.swing.JFrame {
 
         int index = Integer.parseInt(indexNumber.getText());
 
-        User user = new User();
+        Contact user = new Contact();
         user.setDni(dniInput.getText());
         user.setfName(fNameInput.getText());
         user.setsName(sNameInput.getText());
@@ -343,7 +343,7 @@ public class Screen extends javax.swing.JFrame {
         }
 
         //get the data
-        User user = Main.getData(index, "left");
+        Contact user = Main.getData(index, "left");
 
         dniInput.setText(user.getDni());
         fNameInput.setText(user.getfName());

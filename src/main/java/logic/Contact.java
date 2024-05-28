@@ -1,16 +1,16 @@
 package logic;
 
-public class User {
+public class Contact {
     private String dni = "";
     private String fName = "";
     private String sName = ""; 
     private String address = "";
     private String phone = "";
     private String birth = "";
-    public User (){
+    public Contact (){
         
     }
-    public User (String dni, String fName, String sName, String address, String phone, String birth){
+    public Contact (String dni, String fName, String sName, String address, String phone, String birth){
         this.dni = dni;
         this.fName = fName;
         this.sName = sName;

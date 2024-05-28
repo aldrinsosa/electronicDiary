@@ -9,7 +9,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class Main {
 
     //initialize db
-    public static final User[] dbUsers = new User[10];
+    public static final Contact[] dbContacts = new Contact[10];
 
     public static void main(String[] args) {
         
@@ -25,8 +25,8 @@ public class Main {
         }
         
         //fullfill db with empty users
-        for (int i = 0; i < dbUsers.length; i++) {
-            dbUsers[i] = new User();
+        for (int i = 0; i < dbContacts.length; i++) {
+            dbContacts[i] = new Contact();
         }
         
         //set theme
@@ -42,13 +42,13 @@ public class Main {
         screen.setLocationRelativeTo(null);
     }
 
-    public static void saveData(int index, User user) {
-        dbUsers[index] = user;
+    public static void saveData(int index, Contact user) {
+        dbContacts[index] = user;
     }
 
-    public static User getData(int oldIndex, String direction) {
+    public static Contact getData(int oldIndex, String direction) {
         int newIndex = direction.equals("left") ? oldIndex - 1 : oldIndex + 1;
-        return dbUsers[newIndex];
+        return dbContacts[newIndex];
     }
 
 }
