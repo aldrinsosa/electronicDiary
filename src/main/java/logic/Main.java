@@ -36,7 +36,7 @@ public class Main {
             FlatLightLaf.setup();
         }
         
-        //creating gui
+        //create gui
         Screen screen = new Screen();
         screen.setVisible(true);
         screen.setLocationRelativeTo(null);

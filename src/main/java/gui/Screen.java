@@ -119,7 +119,7 @@ public class Screen extends javax.swing.JFrame {
         });
 
         indexNumber.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        indexNumber.setText("0");
+        indexNumber.setText("1");
 
         indexLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         indexLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -298,7 +298,8 @@ public class Screen extends javax.swing.JFrame {
     }//GEN-LAST:event_themeButtonActionPerformed
 
     private void rightBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightBtnActionPerformed
-        int index = Integer.parseInt(indexNumber.getText());
+        //rest 1 because the db start at 0
+        int index = Integer.parseInt(indexNumber.getText()) - 1;
 
         //prevents going out of the array
         if (index == 9) {
@@ -315,13 +316,14 @@ public class Screen extends javax.swing.JFrame {
         phoneInput.setText(user.getPhone());
         birthInput.setText(user.getBirth());
 
-        String newIndex = Integer.toString(index + 1);
+        //add 2 because it need to go 1 place at the right and also 1 was rested at the start of the function
+        String newIndex = Integer.toString(index + 2);
         indexNumber.setText(newIndex);
     }//GEN-LAST:event_rightBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-
-        int index = Integer.parseInt(indexNumber.getText());
+        //rest 1 because the db start at 0
+        int index = Integer.parseInt(indexNumber.getText()) - 1;
 
         Contact contact = new Contact();
         contact.setDni(dniInput.getText());
@@ -335,7 +337,8 @@ public class Screen extends javax.swing.JFrame {
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void leftBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftBtnActionPerformed
-        int index = Integer.parseInt(indexNumber.getText());
+        //rest 1 because the db start at 0
+        int index = Integer.parseInt(indexNumber.getText()) - 1;
 
         //prevents going out of the array
         if (index == 0) {
@@ -352,7 +355,8 @@ public class Screen extends javax.swing.JFrame {
         phoneInput.setText(contact.getPhone());
         birthInput.setText(contact.getBirth());
 
-        String newIndex = Integer.toString(index - 1);
+        //there's no need to rest 1 because at the start it was already substracted
+        String newIndex = Integer.toString(index);
         indexNumber.setText(newIndex);
     }//GEN-LAST:event_leftBtnActionPerformed
 
