@@ -1,10 +1,11 @@
 Dark Mode
 ---
-![A picture of the program in dark mode](/assets/darkMode.png)
----
+
+![A picture of the program in dark mode](/assets/darkMode2.png)
+
 Light Mode
 ---
-![A picture of the program in light mode](/assets/lightMode.png)
+![A picture of the program in light mode](/assets/lightMode2.png)
 
 
 ## Dependencies
