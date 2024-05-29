@@ -20,6 +20,7 @@ public class Screen extends javax.swing.JFrame {
     public Screen() {
         initComponents();
         setIcon();
+        setThemeButton();
     }
 
     /**
@@ -119,21 +120,14 @@ public class Screen extends javax.swing.JFrame {
         });
 
         indexNumber.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        indexNumber.setText("1");
+        indexNumber.setText("0");
 
         indexLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         indexLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        indexLabel.setText("Contact: #");
+        indexLabel.setText("Index: ");
 
         themeButton.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        UserPreferences theme = new UserPreferences();
-        String actualTheme = theme.getTheme();
-        if(actualTheme.equals("dark")){
-            themeButton.setText("🌙️");
-        }
-        else {
-            themeButton.setText("☀️");
-        }
+        themeButton.setText("☀️");
         themeButton.setFocusPainted(false);
         themeButton.setIconTextGap(0);
         themeButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
@@ -432,5 +426,16 @@ public class Screen extends javax.swing.JFrame {
         ImageIcon img = new ImageIcon(iconURL);
 
         setIconImage(img.getImage());
+    }
+
+    private void setThemeButton() {
+        logic.UserPreferences theme = new logic.UserPreferences();
+        String actualTheme = theme.getTheme();
+        if (actualTheme.equals("dark")){
+            themeButton.setText("🌙");
+        }
+        else{
+            themeButton.setText("☀");
+        }
     }
 }

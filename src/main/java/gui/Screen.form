@@ -313,10 +313,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="themeButton">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="logic.UserPreferences theme = new logic.UserPreferences();&#xa;String actualTheme = theme.getTheme();">
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#x2600;&#xfe0f;" postCode="if(actualTheme.equals(&quot;dark&quot;)){&#xa;    themeButton.setText(&quot;&#xd83c;&#xdf19;&#xfe0f;&quot;);&#xa;}&#xa;else {&#xa;    themeButton.setText(&quot;&#x2600;&#xfe0f;&quot;);&#xa;}"/>
+            <Property name="text" type="java.lang.String" value="&#x2600;&#xfe0f;"/>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="iconTextGap" type="int" value="0"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
