@@ -123,7 +123,7 @@ public class Screen extends javax.swing.JFrame {
 
         indexLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         indexLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        indexLabel.setText("Index: ");
+        indexLabel.setText("Contact: #");
 
         themeButton.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         UserPreferences theme = new UserPreferences();
@@ -323,15 +323,15 @@ public class Screen extends javax.swing.JFrame {
 
         int index = Integer.parseInt(indexNumber.getText());
 
-        Contact user = new Contact();
-        user.setDni(dniInput.getText());
-        user.setfName(fNameInput.getText());
-        user.setsName(sNameInput.getText());
-        user.setAddress(addressInput.getText());
-        user.setPhone(phoneInput.getText());
-        user.setBirth(birthInput.getText());
+        Contact contact = new Contact();
+        contact.setDni(dniInput.getText());
+        contact.setfName(fNameInput.getText());
+        contact.setsName(sNameInput.getText());
+        contact.setAddress(addressInput.getText());
+        contact.setPhone(phoneInput.getText());
+        contact.setBirth(birthInput.getText());
 
-        Main.saveData(index, user);
+        Main.saveData(index, contact);
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void leftBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftBtnActionPerformed
@@ -343,14 +343,14 @@ public class Screen extends javax.swing.JFrame {
         }
 
         //get the data
-        Contact user = Main.getData(index, "left");
+        Contact contact = Main.getData(index, "left");
 
-        dniInput.setText(user.getDni());
-        fNameInput.setText(user.getfName());
-        sNameInput.setText(user.getsName());
-        addressInput.setText(user.getAddress());
-        phoneInput.setText(user.getPhone());
-        birthInput.setText(user.getBirth());
+        dniInput.setText(contact.getDni());
+        fNameInput.setText(contact.getfName());
+        sNameInput.setText(contact.getsName());
+        addressInput.setText(contact.getAddress());
+        phoneInput.setText(contact.getPhone());
+        birthInput.setText(contact.getBirth());
 
         String newIndex = Integer.toString(index - 1);
         indexNumber.setText(newIndex);
@@ -382,6 +382,20 @@ public class Screen extends javax.swing.JFrame {
         }, 2 * 1000);
     }
 
+    /**
+     *
+     * @param contact first contact of the db
+     * set the first contact at the start of the application
+     */
+    public void setFirstContact(Contact contact){
+        dniInput.setText(contact.getDni());
+        fNameInput.setText(contact.getfName());
+        sNameInput.setText(contact.getsName());
+        addressInput.setText(contact.getAddress());
+        phoneInput.setText(contact.getPhone());
+        birthInput.setText(contact.getBirth());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressInput;
     private javax.swing.JLabel addressLabel;

@@ -8,25 +8,25 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Main {
 
+    //initialize preferences
+    public static UserPreferences preferences = new UserPreferences();
+    
     //initialize db
-    public static final Contact[] dbContacts = new Contact[10];
+    public static Contact[] dbContacts;
 
     public static void main(String[] args) {
         
         //get actual theme
-        UserPreferences preferences = new UserPreferences();
         String actualTheme = preferences.getTheme();
-
+        
+        //get contacts
+        dbContacts = preferences.getContacts();
+      
         //set FlatLaf Look&Feel
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException ex) {
             System.err.println("Failed to initialize L&F");
-        }
-        
-        //fullfill db with empty users
-        for (int i = 0; i < dbContacts.length; i++) {
-            dbContacts[i] = new Contact();
         }
         
         //set theme
@@ -36,14 +36,16 @@ public class Main {
             FlatLightLaf.setup();
         }
         
-        //creating jframe
+        //creating gui
         Screen screen = new Screen();
         screen.setVisible(true);
         screen.setLocationRelativeTo(null);
+        screen.setFirstContact(dbContacts[0]);
     }
 
     public static void saveData(int index, Contact user) {
         dbContacts[index] = user;
+        preferences.setContact(index, user);
     }
 
     public static Contact getData(int oldIndex, String direction) {
