@@ -278,9 +278,9 @@ public class Screen extends javax.swing.JFrame {
     private void themeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeButtonActionPerformed
         //get actual theme
         UserPreferences preferences = new UserPreferences();
-        String actualTheme = preferences.getTheme();
+        String theme = preferences.getTheme();
 
-        if (actualTheme.equals("dark")) {
+        if (theme.equals("dark")) {
             preferences.setTheme("light");
             themeButton.setText("☀️");
         } else {
@@ -429,9 +429,9 @@ public class Screen extends javax.swing.JFrame {
     }
 
     private void setThemeButton() {
-        logic.UserPreferences theme = new logic.UserPreferences();
-        String actualTheme = theme.getTheme();
-        if (actualTheme.equals("dark")){
+        logic.UserPreferences preferences = new logic.UserPreferences();
+        String theme = preferences.getTheme();
+        if (theme.equals("dark")){
             themeButton.setText("🌙");
         }
         else{
