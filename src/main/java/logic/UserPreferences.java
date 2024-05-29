@@ -13,7 +13,6 @@ public class UserPreferences {
     public Contact[] getContacts(){
         prefs = Preferences.userRoot().node(this.getClass().getName());
         Contact [] contacts = new Contact[10];
-        System.out.println(prefs);
         for (int i = 0; i < contacts.length; i++) {
             contacts[i] = new Contact();
             contacts[i].setAddress(prefs.get("address" + i, ""));

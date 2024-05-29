@@ -120,11 +120,11 @@ public class Screen extends javax.swing.JFrame {
         });
 
         indexNumber.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        indexNumber.setText("0");
+        indexNumber.setText("1");
 
         indexLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         indexLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        indexLabel.setText("Index: ");
+        indexLabel.setText("Contact: #");
 
         themeButton.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         themeButton.setText("☀️");
