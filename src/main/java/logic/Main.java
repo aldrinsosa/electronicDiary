@@ -43,12 +43,12 @@ public class Main {
         screen.setFirstContact(dbContacts[0]);
     }
 
-    public static void saveData(int index, Contact user) {
-        dbContacts[index] = user;
-        preferences.setContact(index, user);
+    public static void saveContact(int index, Contact contact) {
+        dbContacts[index] = contact;
+        preferences.setContact(index, contact);
     }
 
-    public static Contact getData(int oldIndex, String direction) {
+    public static Contact getContact(int oldIndex, String direction) {
         int newIndex = direction.equals("left") ? oldIndex - 1 : oldIndex + 1;
         return dbContacts[newIndex];
     }

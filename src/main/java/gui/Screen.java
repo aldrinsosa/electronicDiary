@@ -301,7 +301,7 @@ public class Screen extends javax.swing.JFrame {
         }
 
         //get the data
-        Contact user = Main.getData(index, "right");
+        Contact user = Main.getContact(index, "right");
 
         dniInput.setText(user.getDni());
         fNameInput.setText(user.getfName());
@@ -327,7 +327,7 @@ public class Screen extends javax.swing.JFrame {
         contact.setPhone(phoneInput.getText());
         contact.setBirth(birthInput.getText());
 
-        Main.saveData(index, contact);
+        Main.saveContact(index, contact);
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void leftBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftBtnActionPerformed
@@ -340,7 +340,7 @@ public class Screen extends javax.swing.JFrame {
         }
 
         //get the data
-        Contact contact = Main.getData(index, "left");
+        Contact contact = Main.getContact(index, "left");
 
         dniInput.setText(contact.getDni());
         fNameInput.setText(contact.getfName());
